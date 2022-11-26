@@ -1,0 +1,22 @@
+allow init hidl_base_hwservice:hwservice_manager add;
+allow init hwservicemanager:binder transfer;
+allow init kernel:system module_request;
+allow init platform_app:binder call;
+allow init proc_dirty:file {  write getattr };
+allow init proc_last_kmsg:file setattr;
+allow init self:netlink_kobject_uevent_socket read;
+allow init tmpfs:lnk_file create;
+
+allow init socket_device:sock_file { create setattr unlink };
+
+allow init efs_file:dir mounton;
+allow init mnt_vendor_file:dir mounton;
+allow init vendor_configs_file:dir mounton;
+allow init vendor_configs_file:file mounton;
+allow init vendor_hal_file:dir mounton;
+allow init vendor_overlay_file:dir mounton;
+allow init vendor_file:file mounton;
+
+allow init sysfs_sec_touchscreen:file { open write };
+allow init sysfs_vibrator:lnk_file { open read };
+allow init vendor_sysfs_battery_supply:lnk_file read;

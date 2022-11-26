@@ -1,0 +1,13 @@
+dontaudit hal_audio_default vendor_radio_prop:file r_file_perms;
+get_prop(hal_audio_default, vendor_radio_prop);
+
+allow hal_audio_default vendor_diag_device:chr_file { ioctl open read write };
+allow hal_audio_default vts_fio_device:chr_file rw_file_perms;
+
+allow hal_audio_default acdbdata_vendor_data_file:dir rw_dir_perms;
+allow hal_audio_default acdbdata_vendor_data_file:file create_file_perms;
+allow hal_audio_default efs_file:dir r_dir_perms;
+r_dir_file(hal_audio_default, sec_efs_file);
+r_dir_file(hal_audio_default, imei_efs_file);
+
+allow hal_audio_default rild:unix_stream_socket connectto;

@@ -1,0 +1,2 @@
+# Ignore harmless denials
+dontaudit { gmscore_app } { vendor_firmware_file adsprpcd_file }:filesystem getattr;
