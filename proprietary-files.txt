@@ -312,8 +312,7 @@ vendor/lib64/vendor.samsung.hardware.snap@1.0.so
 vendor/lib64/vendor.samsung.hardware.snap@1.1.so
 vendor/lib64/vendor.samsung.hardware.snap@1.2.so
 
-# Camera firmware
-vendor/firmware/CAMERA_ICP.elf
+
 
 # Samsung camera
 system/lib/libAiSolution_wrapper_v1.camera.samsung.so
@@ -870,8 +869,7 @@ vendor/lib64/libtinyxml2_1.so
 vendor/lib64/libVkLayer_q3dtools.so
 
 # Graphics firmware 
-vendor/firmware/a650_gmu.bin
-vendor/firmware/a650_sqe.fw
+vendor/etc/adreno_bb.bin
 
 # Hotword
 system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
@@ -891,19 +889,7 @@ vendor/lib64/libqti-iopd.so
 vendor/lib64/vendor.qti.hardware.iop@1.0.so
 vendor/lib64/vendor.qti.hardware.iop@2.0.so
 
-# IPA Firmware
-vendor/firmware/ipa_fws.b00
-vendor/firmware/ipa_fws.b01
-vendor/firmware/ipa_fws.b02
-vendor/firmware/ipa_fws.b03
-vendor/firmware/ipa_fws.b04
-vendor/firmware/ipa_fws.elf
-vendor/firmware/ipa_fws.mdt
-vendor/firmware/ipa_uc.b00
-vendor/firmware/ipa_uc.b01
-vendor/firmware/ipa_uc.b02
-vendor/firmware/ipa_uc.elf
-vendor/firmware/ipa_uc.mdt
+
 
 # Latency
 system_ext/framework/vendor.qti.hardware.data.latency-V1.0-java.jar
@@ -1511,3 +1497,8 @@ vendor/lib64/vendor.samsung.hardware.wifi@2.1.so
 vendor/lib64/vendor.samsung.hardware.wifi@2.2.so
 vendor/lib64/vendor.samsung.hardware.wifi.hostapd@3.0.so
 vendor/lib64/vendor.samsung.hardware.wifi.supplicant@3.0.so
+vendor/etc/wifi/indoorchannel.info
+
+## Unkown
+vendor/etc/plmn_se13.bin
+vendor/etc/snap_gpu_kernel_64.bin

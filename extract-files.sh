@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# Copyright (C) 2020 The LineageOS Project
+# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017-2020 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -59,6 +60,16 @@ fi
 
 function blob_fixup() {
     case "${1}" in
+        vendor/lib64/libgf_ud_hal.so|vendor/lib64/libgf_g6_ud_hal.so)
+            sed -i "s|vendor.boot.verifiedbootstate|vendor.boot.fingerprintbstate|g" "${2}"
+            ;;
+        vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so)
+            hexdump -ve '1/1 "%.2X"' "${2}" | sed "s/210080521F0A0094/210080521F2003D5/g" | xxd -r -p > "${TMPDIR}/${1##*/}"
+            mv "${TMPDIR}/${1##*/}" "${2}"
+            ;;
+        vendor/lib64/hw/com.qti.chi.override.so)
+            sed -i "s/com.oem.autotest/\x00om.oem.autotest/" "${2}"
+            ;;
     esac
 }
 

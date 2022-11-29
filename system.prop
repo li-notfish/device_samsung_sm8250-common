@@ -1,5 +1,5 @@
 # Samsung Specific Properties
-ro.build.PDA=G9810ZCU3FVI4
+ro.build.PDA=G9810ZHS3FVJ1
 ro.build.official.release=true
 ro.build.2ndbrand=false
 ro.config.rm_preload_enabled=1

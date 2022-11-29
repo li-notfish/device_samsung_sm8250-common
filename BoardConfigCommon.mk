@@ -36,7 +36,8 @@ AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/bluetooth/include
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_PATH)/bluetooth
+BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/libbt_vndcfg.txt
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Bootloader
@@ -64,7 +65,7 @@ TARGET_ENABLE_MEDIADRM_64 := true
 
 # DTB
 BOARD_BOOT_HEADER_VERSION := 2
-BOARD_BOOT_HEADER_NAME := RILSI26A003
+BOARD_BOOT_HEADER_NAME := FRPSI26A003
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_MKBOOTIMG_ARGS += --board $(BOARD_BOOT_HEADER_NAME)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
@@ -76,28 +77,24 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 
 # Fingerprint
-TARGET_SEC_FP_CALL_CANCEL_ON_ENROLL_COMPLETION := true
-TARGET_SEC_FP_CALL_NOTIFY_ON_CANCEL := true
-TARGET_SEC_FP_HAS_FINGERPRINT_GESTURES := true
-TARGET_SEC_FP_REQUEST_FORCE_CALIBRATE := true
+# TARGET_SEC_FP_CALL_CANCEL_ON_ENROLL_COMPLETION := true
+# TARGET_SEC_FP_CALL_NOTIFY_ON_CANCEL := true
+# TARGET_SEC_FP_HAS_FINGERPRINT_GESTURES := true
+# TARGET_SEC_FP_REQUEST_FORCE_CALIBRATE := true
+# Fingerprint
+TARGET_SURFACEFLINGER_UDFPS_LIB := //$(COMMON_PATH):libudfps_extension.samsung.sm8250
 
 # HIDL
-# specifies framework requirements on conforming vendor implementations
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
-    $(COMMON_PATH)/device_framework_matrix.xml \
-    $(COMMON_PATH)/samsung_device_framework_matrix.xml \
-    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
-    vendor/aosp/config/device_framework_matrix.xml
-# specifies which HAL versions the vendor image provides
-DEVICE_MANIFEST_FILE += \
-    $(COMMON_PATH)/manifest.xml \
-    $(COMMON_PATH)/samsung_manifest.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    vendor/kscope/target/config/vintf/device_framework_matrix.xml
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
+
 # vendor compatibility matrix
 DEVICE_MATRIX_FILE += $(COMMON_PATH)/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.vbmeta.avb_version=1.1
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
@@ -164,13 +161,17 @@ TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 
 # Recovery
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 
 # RIL
+CUSTOM_APNS_FILE := $(COMMON_PATH)/configs/apns-conf.xml
 ENABLE_VENDOR_RIL_SERVICE := true
 TARGET_USES_VND_SECRIL := true
 
