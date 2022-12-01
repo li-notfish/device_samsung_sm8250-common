@@ -1,0 +1,24 @@
+type hal_sec_inputdev_default, domain;
+hal_server_domain(hal_sec_inputdev_default, hal_sec_inputdev);
+
+type hal_sec_inputdev_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_sec_inputdev_default);
+
+domain_trans(hal_sec_inputdev_default, vendor_shell_exec, vendor_shell);
+
+# HwBinder IPC from client to server, and callbacks
+binder_call(hal_sec_inputdev_client, hal_sec_inputdev_server);
+binder_call(hal_sec_inputdev_server, hal_sec_inputdev_client);
+
+add_hwservice(hal_sec_inputdev_server, hal_sec_inputdev_hwservice);
+allow hal_sec_inputdev_client hal_sec_inputdev_hwservice:hwservice_manager find;
+
+hwbinder_use(hal_sec_inputdev_default);
+
+allow hal_sec_inputdev_default hwservicemanager:file { read getattr map open };
+
+allow hal_sec_inputdev_default sysfs_input:dir r_dir_perms;
+allow hal_sec_inputdev_default sysfs_input:file rw_file_perms;
+
+allow hal_sec_inputdev_default input_device:dir r_dir_perms;
+allow hal_sec_inputdev_default input_device:chr_file rw_file_perms;
