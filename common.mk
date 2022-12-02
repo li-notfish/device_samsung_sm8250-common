@@ -26,6 +26,9 @@ $(call inherit-product, vendor/samsung/sm8250-common/sm8250-common-vendor.mk)
 # Dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
+# No A/B
+AB_OTA_UPDATER := false
+
 # Additional native libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/linker/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
@@ -33,7 +36,7 @@ PRODUCT_COPY_FILES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-kscope
+    $(LOCAL_PATH)/overlay-aosp
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -181,6 +184,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.postproc@1.0 \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
+# CAS
+PRODUCT_PACKAGES += \
+    android.hardware.cas@1.2-service
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images_vendor
@@ -260,6 +267,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
         android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
+    android.hardware.memtrack-service.sm8250 \
     gralloc.kona \
     libdisplayconfig.qti \
     libdisplayconfig.qti.vendor \
@@ -346,8 +354,12 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 # FastCharge
-#PRODUCT_PACKAGES += \
-#    vendor.lineage.fastcharge@1.0-service.samsung
+PRODUCT_PACKAGES += \
+    vendor.lineage.fastcharge@1.0-service.samsung
+
+# Adaptive charging
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/adaptivecharging.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/adaptivecharging.xml    
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -379,7 +391,8 @@ PRODUCT_COPY_FILES += \
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.samsung \
-    android.hardware.health-service.samsung-recovery
+    android.hardware.health-service.samsung-recovery \
+    android.hardware.health@2.1.vendor
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -410,7 +423,7 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
         android.hardware.light-service.samsung \
-    lights.kona
+    android.hardware.light-service.sm8250
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -567,6 +580,12 @@ PRODUCT_PACKAGES += \
 # Properties
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
+# Prop files
+TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
+TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
+TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
+
 # Protobuf
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-vendorcompat \
@@ -615,8 +634,9 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors-service.samsung-multihal \
+    android.hardware.sensors@2.1-service.samsung-multihal \
     libsensorndkbridge \
+    android.hardware.sensors-service.sm8250-multihal
 
 # Servicetracker
 PRODUCT_PACKAGES += \
@@ -625,10 +645,8 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/samsung/aidl/power-libperfmgr \
+    $(COMMON_PATH)/aidl/power-libperfmgr \
     hardware/samsung/nfc \
-    hardware/samsung \
-    vendor/qcom/opensource/interfaces/camera/postproc/1.0 \
     hardware/google/interfaces \
     hardware/google/pixel 
 

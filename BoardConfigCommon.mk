@@ -91,7 +91,8 @@ TARGET_USES_FOD_ZPOS := true
 
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    vendor/kscope/target/config/vintf/device_framework_matrix.xml
+    $(COMMON_PATH)/compatibility_matrix.device.xml \
+    vendor/aosp/config/device_framework_matrix.xml
 DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
 
 # vendor compatibility matrix
@@ -114,6 +115,9 @@ BOARD_RAMDISK_OFFSET := 0x02000000
 BOARD_DTB_OFFSET := 0x01F00000
 
 BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --dtb_offset $(BOARD_DTB_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
+
+# Init
+TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_helpers_sm8250
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -209,8 +213,6 @@ VENDOR_SECURITY_PATCH := 2022-10-01
 
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
-
-SELINUX_IGNORE_NEVERALLOWS = true
 
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
