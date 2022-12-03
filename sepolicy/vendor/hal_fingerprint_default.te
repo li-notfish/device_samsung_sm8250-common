@@ -29,3 +29,10 @@ allow hal_fingerprint_default sec_efs_file:dir create_dir_perms;
 allow hal_fingerprint_default sec_efs_file:file create_file_perms;
 allow hal_fingerprint_default sec_efs_file:lnk_file r_file_perms;
 allow hal_fingerprint_default sec_poc_file:file r_file_perms;
+# /sys/class/sec/tsp/
+allow hal_fingerprint_default sysfs_sec_touchscreen:dir search;
+allow hal_fingerprint_default sysfs_touchscreen_writable:file { write open getattr };
+
+# /sys/class/lcd/panel/mask_brightness
+allow hal_fingerprint_default sysfs_lcd_writable:dir search;
+allow hal_fingerprint_default sysfs_lcd_writable:file rw_file_perms;
