@@ -175,8 +175,10 @@ system/lib64/libaptX_encoder.so
 # Camera
 system/lib/libSEF.quram.so
 system/lib64/libSEF.quram.so
-vendor/bin/hw/vendor.samsung.hardware.snap@1.2-service
-vendor/etc/init/vendor.samsung.hardware.snap@1.2-service.rc
+vendor/bin/hw/vendor.samsung.hardware.snap-service
+vendor/bin/hw/vendor.samsung.hardware.tlc.snap@1.0-service
+vendor/etc/init/vendor.samsung.hardware.tlc.snap@1.0-service.rc
+vendor/lib64/vendor.samsung.hardware.tlc.snap@1.0-impl.so
 vendor/lib/com.qti.feature2.anchorsync.so
 vendor/lib/com.qti.feature2.demux.so
 vendor/lib/com.qti.feature2.frameselect.so
@@ -241,9 +243,7 @@ vendor/lib/libtriplecam_video_optical_zoom.so
 vendor/lib/libuniplugin.so
 vendor/lib/libvideoutils.so
 vendor/lib/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
-vendor/lib/vendor.samsung.hardware.snap@1.0.so
-vendor/lib/vendor.samsung.hardware.snap@1.1.so
-vendor/lib/vendor.samsung.hardware.snap@1.2.so
+vendor/lib/vendor.samsung.hardware.tlc.snap@1.0.so
 vendor/lib64/com.qti.feature2.anchorsync.so
 vendor/lib64/com.qti.feature2.demux.so
 vendor/lib64/com.qti.feature2.frameselect.so
@@ -308,9 +308,7 @@ vendor/lib64/libtriplecam_optical_zoom_control.so
 vendor/lib64/libtriplecam_video_optical_zoom.so
 vendor/lib64/libuniplugin.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
-vendor/lib64/vendor.samsung.hardware.snap@1.0.so
-vendor/lib64/vendor.samsung.hardware.snap@1.1.so
-vendor/lib64/vendor.samsung.hardware.snap@1.2.so
+vendor/lib64/vendor.samsung.hardware.tlc.snap@1.0.so
 
 
 
@@ -324,7 +322,7 @@ system/lib/libcolor_engine.camera.samsung.so
 system/lib/libcore2nativeutil.camera.samsung.so
 system/lib/libDocRectifyWrapper.camera.samsung.so
 system/lib/libEventDetector.camera.samsung.so
-system/lib/libEventFinder.camera.samsung.so
+vendor/lib/libEventFinder.camera.samsung.so
 system/lib/libexifa.camera.samsung.so
 system/lib/libFace_Landmark_API.camera.samsung.so
 system/lib/libFace_Landmark_Engine.camera.samsung.so
@@ -353,17 +351,14 @@ system/lib/libMultiFrameProcessing30Tuning.camera.samsung.so
 system/lib/libMyFilter.camera.samsung.so
 system/lib/libMyFilterPlugin.camera.samsung.so
 system/lib/libOpenCv.camera.samsung.so
-system/lib/libphotoeditorEngine.camera.samsung.so
 system/lib/libQREngine_common.camera.samsung.so
 system/lib/libRectify.camera.samsung.so
 system/lib/libsaiv_HprFace_api.camera.samsung.so
 system/lib/libsaiv_HprFace_cmh_support_jni.camera.samsung.so
 system/lib/libSceneDetector_v1.camera.samsung.so
-system/lib/libsecairevital.camera.samsung.so
 system/lib/libsecimaging.camera.samsung.so
 system/lib/libsecimaging_pdk.camera.samsung.so
 system/lib/libsecjpeginterface.camera.samsung.so
-system/lib/libsecphotoremaster.camera.samsung.so
 system/lib/libSegmentationCore.camera.samsung.so
 system/lib/libSimpleDocRectify.camera.samsung.so
 system/lib/libsmart_cropping.camera.samsung.so
@@ -392,9 +387,10 @@ system/lib64/libBright_core.camera.samsung.so
 system/lib64/libcolor_engine.camera.samsung.so
 system/lib64/libcore2nativeutil.camera.samsung.so
 system/lib64/libDLInterface_hidl.camera.samsung.so
+vendor/lib64/libDLInterface.camera.samsung.so
 system/lib64/libDocRectifyWrapper.camera.samsung.so
 system/lib64/libEventDetector.camera.samsung.so
-system/lib64/libEventFinder.camera.samsung.so
+vendor/lib64/libEventFinder.camera.samsung.so
 system/lib64/libexifa.camera.samsung.so
 system/lib64/libFace_Landmark_API.camera.samsung.so
 system/lib64/libFace_Landmark_Engine.camera.samsung.so
@@ -424,18 +420,15 @@ system/lib64/libMultiFrameProcessing30Tuning.camera.samsung.so
 system/lib64/libMyFilter.camera.samsung.so
 system/lib64/libMyFilterPlugin.camera.samsung.so
 system/lib64/libOpenCv.camera.samsung.so
-system/lib64/libphotoeditorEngine.camera.samsung.so
 system/lib64/libPortraitSolution.camera.samsung.so
 system/lib64/libQREngine_common.camera.samsung.so
 system/lib64/libRectify.camera.samsung.so
 system/lib64/libsaiv_HprFace_api.camera.samsung.so
 system/lib64/libsaiv_HprFace_cmh_support_jni.camera.samsung.so
 system/lib64/libSceneDetector_v1.camera.samsung.so
-system/lib64/libsecairevital.camera.samsung.so
 system/lib64/libsecimaging.camera.samsung.so
 system/lib64/libsecimaging_pdk.camera.samsung.so
 system/lib64/libsecjpeginterface.camera.samsung.so
-system/lib64/libsecphotoremaster.camera.samsung.so
 system/lib64/libSegmentationCore.camera.samsung.so
 system/lib64/libSimpleDocRectify.camera.samsung.so
 system/lib64/libsmart_cropping.camera.samsung.so
@@ -657,7 +650,6 @@ vendor/lib64/vendor.display.color@1.5.so
 vendor/lib64/vendor.display.postproc@1.0.so
 
 # DPM
-system_ext/framework/com.qti.dpmframework.jar
 system_ext/framework/dpmapi.jar
 system/framework/tcmclient.jar
 
@@ -751,8 +743,8 @@ vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/lib64/hw/gatekeeper.mdfpp.so
 
 # GPS
-system/lib/vendor.samsung.hardware.gnss-V2-cpp.so
-system/lib64/vendor.samsung.hardware.gnss-V2-cpp.so
+system/lib/android.hardware.gnss-V2-cpp.so
+system/lib64/android.hardware.gnss-V2-cpp.so
 vendor/bin/loc_launcher
 vendor/bin/lowi-server
 vendor/bin/xtra-daemon
@@ -939,11 +931,9 @@ vendor/lib64/libmdmimgload.so
 
 # Media
 system/lib/libmppclient.so
-system/lib/vendor.samsung.hardware.media.converter-V1-ndk_platform.so
-system/lib/vendor.samsung.hardware.media.mpp-V1-ndk_platform.so
 system/lib64/libmppclient.so
-system/lib64/vendor.samsung.hardware.media.converter-V1-ndk_platform.so
-system/lib64/vendor.samsung.hardware.media.mpp-V1-ndk_platform.so
+vendor/lib64/vendor.samsung.hardware.media.converter-V1-ndk_platform.so
+vendor/lib64/vendor.samsung.hardware.media.mpp-V1-ndk_platform.so
 system_ext/lib/libmmosal.so
 system_ext/lib64/libmmosal.so
 system_ext/lib/vendor.qti.hardware.vpp@1.1.so
@@ -951,7 +941,7 @@ system_ext/lib64/vendor.qti.hardware.vpp@1.1.so
 vendor/bin/hw/mppserver
 vendor/bin/hw/vendor.samsung.hardware.media.converter@1.0-service
 vendor/etc/configstore/vpp.configstore.xml
-vendor/etc/init/mppserver.rc
+vendor/etc/init/mppserver_ros.rc
 vendor/etc/init/vendor.samsung.hardware.media.converter@1.0-service.rc
 vendor/etc/seccomp_policy/mediaextractor_sec.policy
 vendor/etc/system_properties.xml
@@ -1288,7 +1278,6 @@ system/etc/permissions/privapp-permissions-com.sec.imslogger.xml
 system/etc/permissions/rcsopenapi_library.xml
 system/etc/permissions/semextendedformat.xml
 system/etc/permissions/semmediatranscoder.xml
-system/etc/permissions/vsimservice_library.xml
 system/etc/epdg_apns_conf.xml
 system/etc/mapconprovider.xml
 system/framework/EpdgManager.jar
@@ -1300,7 +1289,7 @@ system/framework/semmediatranscoder.jar
 system/framework/semwifi-service.jar
 system/framework/vsimmanager.jar
 system/lib64/libaresdns.so
-system/lib64/libcurl2.so
+system/lib64/libcurl.so
 system/lib64/libresampler_ims.so
 system/lib64/libsec-ims.so
 -system/priv-app/ImsLogger/ImsLogger.apk
@@ -1361,13 +1350,14 @@ vendor/lib64/vendor.qti.imsrtpservice@3.0.so
 
 # Samsung
 vendor/bin/hw/vendor.samsung.hardware.miscpower@2.0-service
-vendor/bin/hw/vendor.samsung.hardware.sysinput@1.2-service
+vendor/bin/hw/vendor.samsung.hardware.sysinput@1.3-service
 vendor/etc/init/vendor.samsung.hardware.miscpower@2.0-service.rc
-vendor/etc/init/vendor.samsung.hardware.sysinput@1.2-service.rc
+vendor/etc/init/vendor.samsung.hardware.sysinput@1.3-service.rc
 vendor/lib64/vendor.samsung.hardware.miscpower@2.0.so
 vendor/lib64/vendor.samsung.hardware.sysinput@1.0.so
 vendor/lib64/vendor.samsung.hardware.sysinput@1.1.so
 vendor/lib64/vendor.samsung.hardware.sysinput@1.2.so
+vendor/lib64/vendor.samsung.hardware.sysinput@1.3.so
 
 # Seccam
 system_ext/lib/vendor.qti.hardware.seccam@1.0.so
