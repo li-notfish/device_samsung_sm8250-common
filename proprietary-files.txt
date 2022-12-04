@@ -243,7 +243,6 @@ vendor/lib/libtriplecam_video_optical_zoom.so
 vendor/lib/libuniplugin.so
 vendor/lib/libvideoutils.so
 vendor/lib/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
-vendor/lib/vendor.samsung.hardware.tlc.snap@1.0.so
 vendor/lib64/com.qti.feature2.anchorsync.so
 vendor/lib64/com.qti.feature2.demux.so
 vendor/lib64/com.qti.feature2.frameselect.so
@@ -309,7 +308,8 @@ vendor/lib64/libtriplecam_video_optical_zoom.so
 vendor/lib64/libuniplugin.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 vendor/lib64/vendor.samsung.hardware.tlc.snap@1.0.so
-
+system/lib64/vendor.samsung.hardware.tlc.snap@1.0.so
+system/lib/vendor.samsung.hardware.tlc.snap@1.0.so
 
 
 # Samsung camera
@@ -386,7 +386,6 @@ system/lib64/libBestPhoto.camera.samsung.so
 system/lib64/libBright_core.camera.samsung.so
 system/lib64/libcolor_engine.camera.samsung.so
 system/lib64/libcore2nativeutil.camera.samsung.so
-system/lib64/libDLInterface_hidl.camera.samsung.so
 vendor/lib64/libDLInterface.camera.samsung.so
 system/lib64/libDocRectifyWrapper.camera.samsung.so
 system/lib64/libEventDetector.camera.samsung.so
