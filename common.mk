@@ -26,6 +26,8 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # No A/B
 AB_OTA_UPDATER := false
 
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
+
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Additional native libraries
@@ -49,46 +51,15 @@ PRODUCT_PACKAGES += \
     android.hardware.atrace@1.0-service
 
 # APNs
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0 \
-    android.hardware.audio@4.0 \
-    android.hardware.audio@5.0 \
-    android.hardware.audio@6.0 \
-    android.hardware.audio@7.0 \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio@4.0-impl \
-    android.hardware.audio@5.0-impl \
     android.hardware.audio@6.0-impl \
-    android.hardware.audio@7.0-impl \
-    android.hardware.audio.common@2.0 \
-    android.hardware.audio.common@4.0 \
-    android.hardware.audio.common@5.0 \
-    android.hardware.audio.common@6.0 \
-    android.hardware.audio.common@7.0 \
-    android.hardware.audio.common@2.0-util \
-    android.hardware.audio.common@4.0-util \
-    android.hardware.audio.common@5.0-util \
-    android.hardware.audio.common@6.0-util \
-    android.hardware.audio.common@7.0-util \
     android.hardware.audio.common-util \
-    android.hardware.audio.effect@2.0 \
-    android.hardware.audio.effect@4.0 \
-    android.hardware.audio.effect@5.0 \
-    android.hardware.audio.effect@6.0 \
-    android.hardware.audio.effect@7.0 \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.audio.effect@4.0-impl \
-    android.hardware.audio.effect@5.0-impl \
     android.hardware.audio.effect@6.0-impl \
-    android.hardware.audio.effect@7.0-impl \
     android.hardware.audio.service \
-    android.hardware.soundtrigger@2.0-impl \
-    android.hardware.soundtrigger@2.1-impl \
-    android.hardware.soundtrigger@2.2-impl \
     android.hardware.soundtrigger@2.3-impl \
     audio.primary.kona \
     audio.r_submix.default \
@@ -152,7 +123,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl \
     android.hardware.bluetooth@1.0-service \
-    android.hardware.bluetooth@1.0.vendor \
     android.hardware.bluetooth@1.1.vendor \
     android.hardware.bluetooth.audio-impl \
     audio.bluetooth.default \
@@ -226,12 +196,12 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     init.udfps.rc \
     init.x1q.rc \
-	init.vendor.rilcarrier.rc \
-	init.vendor.rilchip.rc \
-	init.vendor.sensors.rc \
-	init.vendor.sysfw.rc \
-	wifi_brcm.rc \
-	wifi.rc \
+    init.vendor.rilcarrier.rc \
+    init.vendor.rilchip.rc \
+    init.vendor.sensors.rc \
+    init.vendor.sysfw.rc \
+    wifi_brcm.rc \
+    wifi.rc \
     ueventd.qcom.rc
 
 # Component overrides
@@ -257,15 +227,8 @@ PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
 
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.common-V1-ndk_platform.vendor \
-    android.hardware.graphics.mapper@2.0 \
-    android.hardware.graphics.mapper@2.1 \
-    android.hardware.graphics.mapper@3.0 \
-    android.hardware.graphics.mapper@4.0 \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
-        android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
     android.hardware.memtrack-service.sm8250 \
     gralloc.kona \
     libdisplayconfig.qti \
@@ -278,22 +241,6 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     libvulkan \
     memtrack.kona \
-    vendor.display.config@1.0 \
-    vendor.display.config@1.1 \
-    vendor.display.config@1.2 \
-    vendor.display.config@1.3 \
-    vendor.display.config@1.4 \
-    vendor.display.config@1.5 \
-    vendor.display.config@1.6 \
-    vendor.display.config@1.7 \
-    vendor.display.config@1.8 \
-    vendor.display.config@1.9 \
-    vendor.display.config@1.10 \
-    vendor.display.config@1.11 \
-    vendor.display.config@1.12 \
-    vendor.display.config@1.13 \
-    vendor.display.config@1.14 \
-    vendor.display.config@1.15 \
     vendor.display.config@1.0.vendor \
     vendor.display.config@1.1.vendor \
     vendor.display.config@1.2.vendor \
@@ -306,41 +253,19 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.9.vendor \
     vendor.display.config@1.10.vendor \
     vendor.display.config@1.11.vendor \
-    vendor.display.config@1.12.vendor \
-    vendor.display.config@1.13.vendor \
-    vendor.display.config@1.14.vendor \
-    vendor.display.config@1.15.vendor \
-    vendor.display.config@2.0 \
     vendor.display.config@2.0.vendor \
-    vendor.qti.hardware.display.allocator@1.0 \
-    vendor.qti.hardware.display.allocator@1.0.vendor \
-    vendor.qti.hardware.display.allocator@3.0 \
-    vendor.qti.hardware.display.allocator@3.0.vendor \
-    vendor.qti.hardware.display.allocator@4.0 \
-    vendor.qti.hardware.display.allocator@4.0.vendor \
     vendor.qti.hardware.display.allocator-service \
-    vendor.qti.hardware.display.composer@1.0 \
-    vendor.qti.hardware.display.composer@1.0.vendor \
-    vendor.qti.hardware.display.composer@2.0 \
-    vendor.qti.hardware.display.composer@2.0.vendor \
-    vendor.qti.hardware.display.composer@3.0 \
-    vendor.qti.hardware.display.composer@3.0.vendor \
     vendor.qti.hardware.display.composer-service \
-    vendor.qti.hardware.display.mapper@1.0 \
     vendor.qti.hardware.display.mapper@1.0.vendor \
-    vendor.qti.hardware.display.mapper@1.1 \
     vendor.qti.hardware.display.mapper@1.1.vendor \
-    vendor.qti.hardware.display.mapper@2.0 \
     vendor.qti.hardware.display.mapper@2.0.vendor \
-    vendor.qti.hardware.display.mapper@3.0 \
     vendor.qti.hardware.display.mapper@3.0.vendor \
-    vendor.qti.hardware.display.mapper@4.0 \
     vendor.qti.hardware.display.mapper@4.0.vendor
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.4-service.clearkey \
-    android.hardware.drm@1.4.vendor
+    android.hardware.drm@1.3-service.clearkey \
+    android.hardware.drm@1.3.vendor
 
 # Dumpstate
 PRODUCT_PACKAGES += \
@@ -362,13 +287,12 @@ PRODUCT_COPY_FILES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service-samsung.sm8250
-
+    android.hardware.biometrics.fingerprint@2.3-service-samsung.sm8250 \
+    SamsungUdfpsHandler.sm8250
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service \
-    android.hardware.gatekeeper@1.0.vendor
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -389,12 +313,12 @@ PRODUCT_COPY_FILES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health-service.samsung \
-    android.hardware.health-service.samsung-recovery \
     android.hardware.health@2.1.vendor
 
 # HIDL
 PRODUCT_PACKAGES += \
+    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0.vendor \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
@@ -417,11 +341,11 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml \
     libipanat \
-    liboffloadhal
+    android.hardware.tetheroffload.config@1.0.vendor  \
+    android.hardware.tetheroffload.control@1.0.vendor
 
 # Lights
 PRODUCT_PACKAGES += \
-        android.hardware.light-service.samsung \
     android.hardware.light-service.sm8250
 
 # Media
@@ -449,8 +373,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     libavservices_minijail \
-    libavservices_minijail.vendor \
-    libavservices_minijail_vendor
+    libavservices_minijail.vendor
 
 # Net
 PRODUCT_PACKAGES += \
@@ -464,16 +387,9 @@ PRODUCT_PACKAGES += \
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2-service.samsung \
-    android.hardware.nfc@1.2.vendor \
-    android.hardware.secure_element@1.0 \
-    android.hardware.secure_element@1.1 \
-    android.hardware.secure_element@1.2.vendor \
-    com.android.nfc_extras \
-    libchrome.vendor \
     libnfc-nci \
     libnfc_nci_jni \
     NfcNci \
-    SecureElement \
     Tag
 
 PRODUCT_COPY_FILES += \
@@ -565,9 +481,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.power-service.samsung-libperfmgr \
     android.hardware.power@1.2.vendor \
-    vendor.qti.hardware.perf@2.0.vendor \
-    vendor.qti.hardware.perf@2.1.vendor \
-    vendor.qti.hardware.perf@2.2.vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PLATFORM_VNDK_VERSION)/etc/powerhint.json
@@ -593,26 +506,12 @@ PRODUCT_PACKAGES += \
 # QMI
 PRODUCT_PACKAGES += \
     libjson \
-    libqti_vndfwk_detect \
-    libqti_vndfwk_detect.vendor \
-    libvndfwk_detect_jni.qti \
-    libvndfwk_detect_jni.qti.vendor
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.0 \
-    android.hardware.radio@1.1 \
-    android.hardware.radio@1.2 \
-    android.hardware.radio@1.3 \
     android.hardware.radio@1.3-radio-service.samsung \
-    android.hardware.radio@1.4 \
-    android.hardware.radio@1.5.vendor \
     android.hardware.radio@1.6.vendor \
-    android.hardware.radio.config@1.0 \
-    android.hardware.radio.config@1.1 \
-    android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.config@1.3.vendor \
-    android.hardware.radio.deprecated@1.0 \
     android.hardware.radio.deprecated@1.0.vendor \
     libprotobuf-cpp-full \
     librmnetctl \
@@ -635,6 +534,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.1-service.samsung-multihal \
     libsensorndkbridge \
+    android.hardware.sensors@2.0-ScopedWakelock.vendor \
     android.hardware.sensors-service.sm8250-multihal
 
 # Servicetracker
@@ -692,16 +592,17 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.samsung \
-    vibrator.default \
-    vendor.qti.hardware.vibrator.service
+    android.hardware.vibrator-service.sm8250
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
 # VNDK
-PRODUCT_EXTRA_VNDK_VERSIONS := 28 29 30
-PRODUCT_USE_PRODUCT_VNDK_OVERRIDE := true
+
+BOARD_SHIPPING_API_LEVEL := 30
+BOARD_API_LEVEL := 30
+PRODUCT_EXTRA_VNDK_VERSIONS := 30 31 32
+PRODUCT_TARGET_VNDK_VERSION := 30
 
 # WiFi
 PRODUCT_PACKAGES += \
@@ -710,11 +611,6 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
-    vendor.qti.hardware.wifi.hostapd@1.0.vendor \
-    vendor.qti.hardware.wifi.hostapd@1.1.vendor \
-    vendor.qti.hardware.wifi.hostapd@1.2.vendor \
-    vendor.qti.hardware.wifi.supplicant@2.0.vendor \
-    vendor.qti.hardware.wifi.supplicant@2.1.vendor \
     WifiOverlay \
     wpa_cli \
     wpa_supplicant \
