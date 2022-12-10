@@ -184,6 +184,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_BOARD_INFO_FILE := $(COMMON_PATH)/board-info.txt
 
 # Releasetools
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_sm8250
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)/releasetools
 
 # RIL

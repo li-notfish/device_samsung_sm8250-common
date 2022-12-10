@@ -202,7 +202,9 @@ PRODUCT_PACKAGES += \
     init.vendor.sysfw.rc \
     wifi_brcm.rc \
     wifi.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    fstab.qcom \
+    fstab.qcom.ramdisk \
 
 # Component overrides
 PRODUCT_COPY_FILES += \
